@@ -1,0 +1,25 @@
+<div>
+  <!-- Interpolation -->
+  <h2> {{title}}</h2>
+  <h3><b>*ngIf and *ngFor</b></h3>
+  <!-- Event and attribute -->
+    <select class="form-control" [(ngModel)]="selectCurrency">
+      <option></option>
+      <option *ngFor="let val of currencies" value="{{val.currency}}">{{val.currency}}</option>
+    </select>
+
+    <div class="color-red alert" *ngIf="!selectCurrency">Select an option</div>
+    <div class="alert alert-success" *ngIf="selectCurrency">
+      You selected {{selectCurrency}}
+    </div>
+  <h3><b>ngClass y ngStyle</b></h3>
+  <button class="btn btn-warning" (click)='alertClasses={"alert":true,"alert-warning":true,"alert-danger":false,"alert-info":false,"alert-success":false}'>Add class warning</button>
+  <button class="btn btn-danger" (click)='alertClasses={"alert":true,"alert-warning":false,"alert-danger":true,"alert-info":false,"alert-success":false}'>Add class danger</button>
+  <button class="btn btn-info" (click)='alertClasses={"alert":true,"alert-warning":false,"alert-danger":false,"alert-info":true,"alert-success":false}'>Add class info</button>
+  <button class="btn btn-success" (click)='alertClasses={"alert":true,"alert-warning":false,"alert-danger":false,"alert-info":false,"alert-success":true}'>Add class success</button>
+  <button *ngIf="active" class="btn" (click)='setStyle(true)'>Add style inline</button>
+  <button *ngIf="!active" class="btn" (click)='setStyle(false)'>Remove style inline</button>
+  <div [ngClass]="alertClasses" [ngStyle]="alertStyle">
+    You can Change the class or styles
+  </div>
+</div>
